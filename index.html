@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>hello Tank</title>
+    <style>
+        html , body {
+            background: #212121;
+            color: #fff;
+            font-family: Helvetica;
+            margin: 0;
+            padding: 0;
+        }
+        #canvas {
+            border:solid 1px #333;
+            height : 480px;
+            margin: auto;
+            left:0; right:0; top:0; bottom:0;
+            position: absolute;
+            width : 720px;
+            z-index:100;
+        }
+    </style>
+</head>
+<body>
+    <canvas width=600 height=600 id="canvas"></canvas>
+    <button onclick="addToGame()">加入游戏</button>
+    <button onclick="StartGame()">开始比赛</button>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="/lib/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/lib/lodash.js"></script>
+    <script type="text/javascript" src="core.js"></script>
+</body>
+</html>
+
