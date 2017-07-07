@@ -2,6 +2,9 @@
  * Created by bingo on 2017/7/7.
  */
 
+
+
+
 var game_server = {
     players:[],
     shells:[],
@@ -12,7 +15,7 @@ game_server.handleMsg =(msg)=>{
     console.log(msg.type);
     let payload = msg.payload;
     switch (msg.type){
-        case "ADD_PLAYER":
+        case 'ADD_PLAYER':
             addPlayer(payload);
             break;
         case "REMOVE_PLAYER":

@@ -12,11 +12,8 @@ var
     app = express(),
     server = http.createServer(app);
 
-
-
 server.listen(gameport);
 console.log('\t :: Express :: Listening on port ' + gameport);
-
 
 app.get('/', function (req, res) {
     console.log('trying to load %s', __dirname + '/index.html');

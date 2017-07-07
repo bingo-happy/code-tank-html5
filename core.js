@@ -23,7 +23,12 @@ socket.on('message',(msg)=>{
 
 
 function handleMsg(msg) {
+    console.log(msg.type);
+    let payload = msg.payload;
+    switch (msg.type){
+        case '':
 
+    }
 }
 
 
@@ -31,7 +36,7 @@ function addToGame() {
 
     player.name = "!!";
     socket.emit("message",{
-        type:"ADD_PLAY",
+        type: constants.ADD_PLAYER,
         payload:player,
     })
 }
