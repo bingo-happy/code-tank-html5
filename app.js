@@ -55,6 +55,6 @@ sio.sockets.on('connection', function (client) {
     });
     client.on('disconnect', function () {
         console.log('\t socket.io:: client disconnected ' + client.userid + ' ' + client.game_id);
-
+        game_server.handleMsg({type:"REMOVE_PLAYER",payload:client.userid},sio.sockets)
     });
 });

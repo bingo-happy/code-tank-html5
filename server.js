@@ -73,6 +73,12 @@ function emitParam() {
 }
 
 function addPlayer(player){
+    let hasThisPlay = false;
+    _.forEach(game_server.players,item=>{
+        if(player.uuid==item.uuid)
+            hasThisPlay = true;
+    });
+    if(hasThisPlay)return;
     // console.log("function addPlayer");
     player.x=Math.min(MAP_SIZE,player.x);
     player.x=Math.max(0,player.x);
@@ -89,10 +95,10 @@ function addPlayer(player){
     emitParam();
 }
 
-function removePlayer (player){
+function removePlayer (id){
     // console.log("function removePlayer");
     _.remove(game_server.players,item=>{
-        return player.uuid==item.id;
+        return uuid==item.id;
     })
 }
 
