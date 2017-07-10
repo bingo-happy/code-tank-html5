@@ -48,12 +48,10 @@ var game_server = require('./server.js');
 sio.sockets.on('connection', function (client) {
 
     client.userid = UUID();
-    client.emit('onconnected', {id:client.id});
+    client.emit('onconnected', {id:client.id,});
     console.log('\t socket.io:: player ' + client.userid + ' connected');
     client.on('message', function (msg) {
-        console.log("msg:" + JSON.stringify(msg));
-        console.log("game_server:" + game_server);
-        game_server.handleMsg(msg)
+        game_server.handleMsg(msg,sio.sockets)
     });
     client.on('disconnect', function () {
         console.log('\t socket.io:: client disconnected ' + client.userid + ' ' + client.game_id);

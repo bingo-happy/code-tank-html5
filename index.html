@@ -13,19 +13,70 @@
         }
         #canvas {
             border:solid 1px #333;
-            height : 480px;
+            height : 800px;
             margin: auto;
             left:0; right:0; top:0; bottom:0;
             position: absolute;
-            width : 720px;
+            width : 800px;
             z-index:100;
         }
     </style>
 </head>
 <body>
-    <canvas width=600 height=600 id="canvas"></canvas>
-    <button onclick="addToGame()">加入游戏</button>
-    <button onclick="StartGame()">开始比赛</button>
+    <canvas width=800 height=800 id="canvas"></canvas>
+    <div style="display: flex">
+        <div style="display: flex;flex-direction: column;width: 200px">
+            <div id="panel"  style="display: flex;flex-direction: column;max-height: 1000px;overflow: auto;transition:1s max-height;">
+                <div style="display: flex;flex-direction: column;">
+                    <label>初始x</label>
+                    <input id="startX" style="background-color:transparent;color: aqua" type="text" onkeyup="if(/\D/.test(this.value)){alert('只能输入数字');this.value='';}"/>
+                    <label>初始y</label>
+                    <input id="startY" style="background-color:transparent;color: aqua" onkeyup="if(/\D/.test(this.value)){alert('只能输入数字');this.value='';}"/>
+                    <label>名字</label>
+                    <input id="startName" style="background-color:transparent;color: aqua" maxlength="10" />
+                    <label>组号</label>
+                    <input id="startGroup" style="background-color:transparent;color: aqua"  onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^0-7]/g,'')}else{this.value=0}"/>
+                    <label>走位code</label>
+                    <textarea placeholder="参数me,players,shells,map,标准输出return [1,0],作为dx和dy"  rows="8" id="startMoveCode" style="background-color:transparent;color: aqua"></textarea>
+                    <label>打炮code</label>
+                    <textarea placeholder="参数me,players,shells,map,标准输出return [1,0],作为dx和dy" rows="8" id="startShellCode" style="background-color:transparent;color: aqua"></textarea>
+                    <button onclick="addToGame()">addToGame</button>
+                </div>
+                <div id="StartStopGame" style="display: flex;flex-direction: column;visibility:hidden">
+                    <button onclick="StartStopGame()">StartStopGame</button>
+                    <button onclick="addRobot()">add robot</button>
+                    <button onclick="reset()">reset</button>
+                </div>
+                <div style="display: flex;flex-direction: column;">
+                    <div id="showX"></div>
+                    <div id="showY"></div>
+                    <div id="showDx"></div>
+                    <div id="showDy"></div>
+                    <div id="showReadyShells"></div>
+                </div>
+            </div>
+            <button onclick="showHidPanel()">showHidPanel</button>
+        </div>
+        <div style="flex:1"></div>
+        <div>
+                <div style="width:200px;max-height: 0px;overflow: auto;transition:1s max-height;" id="doc">
+                    <div style="margin-top: 20px">
+                        player属性：
+                        坐标x,y，方向dx,dy，姓名:nam,分组group,炮弹准备readyShells（积累10可以发射一次）
+                    </div>
+                    <div style="margin-top: 20px">
+                        shell属性：
+                        坐标x,y，方向dx,dy，分组group，不存在dx和dy同时为0的炮弹
+                    </div>
+                    <div style="margin-top: 20px">
+                        map属性：
+                        暂时没有用
+                    </div>
+                </div>
+            <button onclick="showHidDoc()">showHideDocument</button>
+        </div>
+    </div>
+
     <script src="/socket.io/socket.io.js"></script>
     <script type="text/javascript" src="/lib/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="/lib/lodash.js"></script>
