@@ -37,9 +37,9 @@
                     <label>组号</label>
                     <input id="startGroup" style="background-color:transparent;color: aqua"  onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^0-7]/g,'')}else{this.value=0}"/>
                     <label>走位code</label>
-                    <textarea placeholder="参数me,players,shells,map,标准输出return [1,0],作为dx和dy"  rows="8" id="startMoveCode" style="background-color:transparent;color: aqua"></textarea>
+                    <textarea placeholder="参数me,players数组,shells数组,map,标准输出return [1,0],作为dx和dy"  rows="8" id="startMoveCode" style="background-color:transparent;color: aqua"></textarea>
                     <label>打炮code</label>
-                    <textarea placeholder="参数me,players,shells,map,标准输出return [1,0],作为dx和dy" rows="8" id="startShellCode" style="background-color:transparent;color: aqua"></textarea>
+                    <textarea placeholder="参数me,players数组,shells数组,map,标准输出return [1,0],作为dx和dy" rows="8" id="startShellCode" style="background-color:transparent;color: aqua"></textarea>
                     <button onclick="addToGame()">addToGame</button>
                 </div>
                 <div id="StartStopGame" style="display: flex;flex-direction: column;visibility:hidden">
